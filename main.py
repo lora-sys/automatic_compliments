@@ -8,6 +8,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import queue
 import os
+import sys
 
 # 定义全局变量
 time_list = []
@@ -50,7 +51,14 @@ def is_valid(time_str):
 
 def load_compliments():
     """从文件加载夸人话术"""
-    file_path = os.path.join(os.path.dirname(__file__), "resources", "compliments.txt")
+    if getattr(sys, 'frozen', False):
+        # 如果是打包后的可执行文件
+        base_path = sys._MEIPASS
+    else:
+        # 如果是源代码
+        base_path = os.path.dirname(__file__)
+    
+    file_path = os.path.join(base_path, "resources", "compliments.txt")
     print(f"文件路径: {file_path}")  # 打印文件路径
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -120,6 +128,10 @@ def start_compliment():
         threading.Thread(target=compliment_at_time, args=(time_str,), daemon=True).start()
 
     messagebox.showinfo("提示", f"夸人时间已经设置为 {','.join(time_list)}！")
+
+# 设置工作目录为可执行文件所在的目录
+if getattr(sys, 'frozen', False):
+    os.chdir(sys._MEIPASS)
 
 # 检查文件是否存在
 file_path = os.path.join(os.path.dirname(__file__), "resources", "compliments.txt")

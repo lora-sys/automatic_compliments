@@ -10,3 +10,4 @@
 1. 克隆仓库：
    ```bash
   https://github.com/tuiweicui/automatic_compliments.git
+## 可执行文件
