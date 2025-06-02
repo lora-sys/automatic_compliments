@@ -11,3 +11,7 @@
    ```bash
   https://github.com/tuiweicui/automatic_compliments.git
 ## 可执行文件
+ dist/automatic——compliments.exe
+## 适配
+- 暂不适配mac，Linux
+- 后续推出新功能
