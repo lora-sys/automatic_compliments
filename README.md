@@ -8,8 +8,7 @@
 
 ## 使用方法
 1. 克隆仓库：
- git clone https://github.com/tuiweicui/automatic_compliments.git
-   """bash
+ git clone https://github.com/tuiweicui/automatic_compliments.git """bash
 
 ## 可执行文件
  dist/automatic——compliments.exe
